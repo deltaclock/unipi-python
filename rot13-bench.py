@@ -62,4 +62,8 @@ So the result is the best of 3!\n'
 
 
 if __name__ == '__main__':
-    tests()
+    try:
+        tests()
+    except (KeyboardInterrupt, EOFError):
+        print '\nQuitting..'
+        quit(0)

@@ -46,4 +46,8 @@ def rotNoneliner(n, text):  # the oneliner..
 
 if __name__ == '__main__':
     while True:
-        print rotNoneliner(13, raw_input('Enter text to "encrypt" '))
+        try:
+            print rotNoneliner(13, raw_input('Enter text to "encrypt" '))
+        except (KeyboardInterrupt, EOFError):
+            print '\nQuitting..'
+            quit(0)
