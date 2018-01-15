@@ -1,6 +1,7 @@
 from string import ascii_lowercase as alc, ascii_uppercase as auc, maketrans
 # made by using
 # a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+# generate b by passing a to another func or online :D
 # b = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
 # and just dict(zip([i for i in a], [i for i in b]))
 

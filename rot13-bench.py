@@ -1,3 +1,4 @@
+# BUT WHY!! curious,fun,paranoia
 from random import choice
 import string
 import timeit
