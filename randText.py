@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # first we will assume the input file is a txt because of course python cant
 # read "words" of binary data files like pdf and doc..(at least with open/read)

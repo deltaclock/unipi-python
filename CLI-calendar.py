@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # simple port of linux cal in python...
 # python 2.7 supports directory comprehension!!!!!
 # we get the dict below with {v:k for k,v in enumerate(calendar.month_abbr)}

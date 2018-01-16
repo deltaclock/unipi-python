@@ -1,4 +1,6 @@
-# BUT WHY!! curious,fun,paranoia
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# BUT WHY!! curiosity,fun, speed paranoia
 from random import choice
 import string
 import timeit
