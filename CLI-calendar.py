@@ -21,7 +21,7 @@ def handCraftedCalendar(monthN, yearN):
     print ('\t' * idx if monthData[0] != 7 else 0),
     for date in range(monthData[1]):
         idx += 1
-        if idx > 7:
+        if idx > 7:  # so it brakes on the saturday
             print '\n'
             idx = +1
         print str(date + 1) + '\t',
@@ -37,6 +37,7 @@ def CpythonCal(year, mon):
 
 if __name__ == '__main__':
     try:
+        # title makes the first letter uppercase
         mon = monthsDict[raw_input('Enter the Month ')[:3].title()]
         year = int(raw_input('Enter the Year '))
     except KeyError:

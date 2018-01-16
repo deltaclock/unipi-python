@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# unicode for some weird roman numbers..
+# please set your terminal charset to utf-8
 romanNums = ((u'\u2188 ', 100000), (u'\u2187 ', 50000),
              (u'\u2181 ', 10000), (u'\u2180 ', 5000),
              ('M', 1000), ('CM', 900), ('D', 500),
