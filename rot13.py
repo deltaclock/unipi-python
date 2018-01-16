@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from string import ascii_lowercase as alc, ascii_uppercase as auc, maketrans
+from string import printable
 # made by using
 # a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 # generate b by passing a to another func or online :D
@@ -17,11 +18,24 @@ letterDict = {'A': 'N', 'C': 'P', 'B': 'O', 'E': 'R', 'D': 'Q',
               'q': 'd', 'p': 'c', 's': 'f', 'r': 'e', 'u': 'h', 't': 'g',
               'w': 'j', 'v': 'i', 'y': 'l', 'x': 'k', 'z': 'm'}
 
+# why string concat instead of a join on a list?
+# http://blog.mclemon.io/python-efficient-string-concatenation-in-python-2016-edition
+
 
 def rot13Lazy(strng):  # the lazy :D
     res = ''
     for char in strng:
         res += letterDict[char] if char.isalpha() else char
+    return res
+
+
+lookup = {k: rot13Lazy(k) for k in printable}
+
+
+def rot13LazyV2(text):
+    res = ''
+    for char in text:
+        res += lookup[char]
     return res
 
 
@@ -43,7 +57,7 @@ def rotNoneliner(n, text):  # the oneliner..
     return text.translate(maketrans(alc + auc, alc[n:] + alc[:n]
                                     + auc[n:] + auc[:n]))
 
-# The fastest of all is the oneliner with 2nd place the lazy..see tests @-bench
+# The fastest of all is the oneliner with 2nd place the lazyV2..see tests
 
 
 if __name__ == '__main__':
