@@ -25,26 +25,36 @@ def storeInTriplets(wordList):
 def foundTriplets(tripleList, wordsToFind):
     possibleFindings = []
 
-    for idx, triplet in enumarate(tripleList):
+    for idx, triplet in enumerate(tripleList):
         if wordsToFind[0] in triplet and wordsToFind[1] in triplet:
             possibleFindings.append(idx)
-
+    # print 'printing possible findings ',
+    # print possibleFindings
     findings = []
 
     for i in possibleFindings:
-        if tripleList[i][0] == wordsToFind[0]
-        and tripleList[i][1] == wordsToFind[1]:
+        if tripleList[i][0] == wordsToFind[0]\
+                and tripleList[i][1] == wordsToFind[1]:
             findings.append(i)
-
-    return random.choice(findings)
+    # print 'printing findings ',
+    # print findings
+    return random.choice(findings) if len(findings) > 0 else False
 
 
 def createText(tripleList):
     finalText = random.choice(tripleList)
     while len(finalText) < 206:
         last2words = finalText[-2:]
-        finalText.append(tripleList[foundTriplets(tripleList, last2words)])
+        foundPosition = foundTriplets(tripleList, last2words)
+        if foundPosition:
+            finalText.append(tripleList[foundPosition])
+        else:
+            print 'stuff to do when not found!!'
+            break
+    return ' '.join(finalText)
 
 
 if __name__ == '__main__':
-    scanFile(raw_input('Enter file path '))
+    triList = storeInTriplets(scanFile(raw_input('Enter file path ')))
+    print triList
+    print createText(triList)
