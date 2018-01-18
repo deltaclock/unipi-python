@@ -9,4 +9,5 @@ To properly run the rot13 benchmarks you will need:
 ```python -mpip install -U matplotlib ``` or ```apt install python3-matplotlib```
 
 ***
-![alt text](https://imgur.com/a/7NJaG "Example Run")
+
+![alt text](https://i.imgur.com/wFqQcHt.png "Example Run")
