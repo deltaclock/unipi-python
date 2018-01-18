@@ -4,75 +4,93 @@
 from random import choice
 import string
 import timeit
+from time import time
 import rot13
 
 '''
 ++++++++
 Results
 ++++++++
-This script will benchmark all 3 of the ROT functions..
+Time required to make a list of 10000 strings  2.52859210968
+This script will benchmark all 4 of the ROT functions..
 This might take a while.. Continue? [y/n]y
-Note the test will run 3 times x 10000 times for each test..
-So the result is the best of 3!
+Note the test will run 3 times x 10000 times for each test.. So the result
+is the best of 3!
 
-Using the dictionary we got 3.2093930244 sec for 10000 loops
+Using the dictionary we got 0.6673209667 sec for 10000 loops
 
-Using the dict \w all the printable charswe got 2.9111669064 sec for 10000loops
+Using the dict \w all the printable chars we got 0.3962030411 sec for
+ 10000 loops
 
-Using the modulo we got 6.3325240612 sec for 10000 loops
+Using the modulo we got 3.9189569950 sec for 10000 loops
 
-Using the string.translate module we got 2.5084860325 sec for 10000 loops
+Using the string.translate module we got 0.0100760460 sec for 10000 loops
+
 
 '''
 
+number_of_runs = 10000
 
-# for benchmarking..
-# a random string combination of digits, letters, punctuation, and ' '.
-def benchLazy():
-    randString = ''.join(choice(string.printable) for _ in range(1000))
-    rot13.rot13Lazy(randString)
-
-
-def benchLazyV2():
-    randString = ''.join(choice(string.printable) for _ in range(1000))
-    rot13.rot13LazyV2(randString)
+ts = time()
+random_strings = [''.join(choice(string.printable) for _ in range(1000))
+                  for __ in range(number_of_runs)]
+print 'Time required to make a list of 10000 strings ', time() - ts
 
 
-def benchMath():
-    randString = ''.join(choice(string.printable) for _ in range(1000))
-    rot13.rot13Math(13, randString)
+def benchLazy(text):
+    rot13.rot13Lazy(text)
 
 
-def benchrotNoneliner():
-    randString = ''.join(choice(string.printable) for _ in range(1000))
-    rot13.rotNoneliner(13, randString)
+def benchLazyV2(text):
+    rot13.rot13LazyV2(text)
+
+
+def benchMath(text):
+    rot13.rot13Math(13, text)
+
+
+def benchrotNoneliner(text):
+    rot13.rotNoneliner(13, text)
 
 
 def tests():
-    if raw_input('This script will benchmark all 3 of the ROT functions..\
+    if raw_input('This script will benchmark all 4 of the ROT functions..\
                  \nThis might take a while.. Continue? [y/n]').lower() == 'y':
 
-        print 'Note the test will run 3 times x 10000 times for each test.. \
-So the result is the best of 3!\n'
+        print 'Note the test will run 3 times x %i times for each test.. \
+So the result is the best of 3!\n' % number_of_runs
 
         lazy = '{:.10f}'.format(min(timeit.repeat(
-            "benchLazy()", "from __main__ import benchLazy", number=10000)))
-        print 'Using the dictionary we got ' + lazy + ' sec for 10000 loops\n'
+            "benchLazy(random_strings[i]); i += 1",
+            "from __main__ import benchLazy, random_strings; i = 0",
+            number=number_of_runs)))
+
+        print 'Using the dictionary we got ' + lazy
+        + ' sec for %i loops\n' % number_of_runs
 
         lazyV2 = '{:.10f}'.format(min(timeit.repeat(
-            "benchLazyV2()", "from __main__ import benchLazyV2", number=10000)))
+            "benchLazyV2(random_strings[i]); i += 1",
+            "from __main__ import benchLazyV2, random_strings; i = 0",
+            number=number_of_runs)))
+
         print 'Using the dict \w all the printable chars\
- we got ' + lazyV2 + ' sec for 10000 loops\n'
+ we got ' + lazyV2 + ' sec for %i loops\n' % number_of_runs
 
         math = '{:.10f}'.format(min(timeit.repeat(
-            "benchMath()", "from __main__ import benchMath", number=10000)))
-        print 'Using the modulo we got ' + math + ' sec for 10000 loops\n'
+            "benchMath(random_strings[i]); i += 1",
+            "from __main__ import benchMath, random_strings; i = 0",
+            number=number_of_runs)))
+
+        print 'Using the modulo we got ' + math
+        + ' sec for %i loops\n' % number_of_runs
 
         strPacket = '{:.10f}'.format(min(timeit.repeat(
-            "benchrotNoneliner()", "from __main__ import benchrotNoneliner",
-            number=10000)))
+            "benchrotNoneliner(random_strings[i]); i += 1",
+            "from __main__ import benchrotNoneliner, random_strings; i = 0",
+            number=number_of_runs)))
+
         print 'Using the string.translate module we got ' + strPacket +\
-            ' sec for 10000 loops\n'
+            ' sec for %i loops\n' % number_of_runs
 
 
 if __name__ == '__main__':
