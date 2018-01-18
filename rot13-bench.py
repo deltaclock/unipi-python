@@ -59,20 +59,21 @@ def benchrotNoneliner(text):
 def graph(performanceList):
     # Restore the rc params from Matplotlib’s internal defaults.
     plt.rcdefaults()
-    fig, ax = plt.subplots()
+    plt.style.use('ggplot')
+    fig, ax = plt.subplots(figsize=(20, 7))
+    plt.subplots_adjust(left=0.05, right=0.95, top=0.9, bottom=0.1)
 
-    funcs = ('Lazy', 'LazyV2', 'Math', 'String Methods')
+    funcs = ('Lazy', 'LazyV2', 'Math', 'Strings')
     y_pos = np.arange(len(funcs))
-    performance = performanceList
-    error = np.random.rand(len(funcs))
 
-    ax.barh(y_pos, performance, xerr=error, align='center',
-            color='yellow', ecolor='black')
+    ax.barh(y_pos, performanceList, align='center',
+            color='dodgerblue')
     ax.set_yticks(y_pos)
     ax.set_yticklabels(funcs)
     ax.invert_yaxis()  # labels read top-to-bottom
     ax.set_xlabel('seconds (less is better)')
     ax.set_title('Time each function took to complete')
+    ax.set_xlim([0, performanceList[2]])
 
     plt.show()
 
