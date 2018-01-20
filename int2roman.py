@@ -26,7 +26,7 @@ if __name__ == '__main__':
         try:
             print int2roman(int(raw_input('Enter a number ')))
         except ValueError:
-            print 'ONLY numbers...'
+            print 'ONLY integers...'
         except (KeyboardInterrupt, EOFError):
             print '\nQuitting..'
             quit(0)
