@@ -54,8 +54,8 @@ def rot13Math(n, text):  # math's guy favorite
 
 
 def rotNoneliner(n, text):  # the oneliner..
-    return text.translate(maketrans(alc + auc, alc[n:] + alc[:n]
-                                    + auc[n:] + auc[:n]))
+    return text.translate(maketrans(alc + auc, alc[n:] + alc[:n] +
+                                    auc[n:] + auc[:n]))
 
 # The fastest of all is the oneliner with 2nd place the lazyV2..see tests
 

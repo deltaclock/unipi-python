@@ -60,7 +60,7 @@ def graph(performanceList):
     # Restore the rc params from Matplotlib’s internal defaults.
     plt.rcdefaults()
     plt.style.use('ggplot')
-    fig, ax = plt.subplots(figsize=(20, 7))
+    fig, ax = plt.subplots(figsize=(18, 7))  # max screen width
     plt.subplots_adjust(left=0.05, right=0.95, top=0.9, bottom=0.1)
 
     funcs = ('Lazy', 'LazyV2', 'Math', 'Strings')
