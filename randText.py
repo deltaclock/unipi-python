@@ -3,6 +3,7 @@
 # first we will assume the input file is a txt because of course python cant
 # read "words" of binary data files like pdf and doc..(at least with open/read)
 import random
+import string
 
 
 def scanFile(filePath):
@@ -11,7 +12,8 @@ def scanFile(filePath):
         for line in fl:
             for word in line.strip().split():
                 if len(word) < 45 and word.islower():
-                    words.append(word)
+                    # removing punctuation and hoping
+                    words.append(word.translate(None, string.punctuation))
     return words
 
 
@@ -22,7 +24,7 @@ def storeInTriplets(wordList):
             for i in xrange(0, len(wordList), 3)]
 
 
-def foundTriplets(tripleList, wordsToFind):
+def validTriplets(tripleList, wordsToFind):
     possibleFindings = []
 
     for idx, triplet in enumerate(tripleList):
@@ -42,30 +44,37 @@ def foundTriplets(tripleList, wordsToFind):
 
 
 def createText(tripleList):
+    c = 0
     finalText = random.choice(tripleList)
-    while len(finalText) < 206:
+    print 'The script will try again and again..Until success..'
+    while len(finalText) < 66:
         last2words = finalText[-2:]
-        foundPosition = foundTriplets(tripleList, last2words)
+        foundPosition = validTriplets(tripleList, last2words)
         if foundPosition:
             finalText.append(tripleList[foundPosition])
         else:
-            print 'stuff to do when not found!!'
-            break
+            # since the exercise doesnt clearly specify what should happen in
+            # that case I will just assume  ¯\_(ツ)_/¯
+            if len(finalText) > c:
+                print 'NEW record!!! Correct triplets', len(finalText)
+                c += len(finalText)
+            finalText = random.choice(tripleList)
+
     return ' '.join(finalText)
 
 
 if __name__ == '__main__':
-    txtFile = raw_input('Enter file path ')
-    # could do a /usr/bin/file against the user file but since this is a py
-    # script anyone (with some knowledge) can read the source..even if its
-    # compiled(.pyc) or obfuscated
-    if txtFile[-3:] != 'txt':
-        print 'Only a txt file!..'
-        quit(0)
-        try:
-            triList = storeInTriplets(scanFile(txtFile))
-            print triList
-            print createText(triList)
-        except (KeyboardInterrupt, EOFError):
-            print '\nQuitting..'
+    try:
+        txtFile = raw_input('Enter file path ')
+        # could do a /usr/bin/file against the user file but since this is a py
+        # script anyone (with some knowledge) can read the source..even if its
+        # compiled(.pyc) or obfuscated
+        if txtFile[-3:] != 'txt':
+            print 'Only a txt file!..'
             quit(0)
+        triList = storeInTriplets(scanFile(txtFile))
+        print triList
+        print createText(triList)
+    except (KeyboardInterrupt, EOFError):
+        print '\nQuitting..'
+        quit(0)
