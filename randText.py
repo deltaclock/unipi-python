@@ -55,6 +55,17 @@ def createText(tripleList):
 
 
 if __name__ == '__main__':
-    triList = storeInTriplets(scanFile(raw_input('Enter file path ')))
-    print triList
-    print createText(triList)
+    txtFile = raw_input('Enter file path ')
+    # could do a /usr/bin/file against the user file but since this is a py
+    # script anyone (with some knowledge) can read the source..even if its
+    # compiled(.pyc) or obfuscated
+    if txtFile[-3:] != 'txt':
+        print 'Only a txt file!..'
+        quit(0)
+        try:
+            triList = storeInTriplets(scanFile(txtFile))
+            print triList
+            print createText(triList)
+        except (KeyboardInterrupt, EOFError):
+            print '\nQuitting..'
+            quit(0)
