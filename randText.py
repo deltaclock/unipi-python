@@ -47,11 +47,12 @@ def createText(tripleList):
     c = 0
     finalText = random.choice(tripleList)
     print 'The script will try again and again..Until success..'
-    while len(finalText) < 66:
+    while len(finalText) < 201:
+        # print finalText
         last2words = finalText[-2:]
         foundPosition = validTriplets(tripleList, last2words)
         if foundPosition:
-            finalText.append(tripleList[foundPosition])
+            finalText += tripleList[foundPosition]
         else:
             # since the exercise doesnt clearly specify what should happen in
             # that case I will just assume  ¯\_(ツ)_/¯
@@ -73,8 +74,10 @@ if __name__ == '__main__':
             print 'Only a txt file!..'
             quit(0)
         triList = storeInTriplets(scanFile(txtFile))
-        print triList
-        print createText(triList)
+        # print triList
+        resText = createText(triList)
+        print 'Text with length ', len(resText.split()), '\n'
+        print resText
     except (KeyboardInterrupt, EOFError):
         print '\nQuitting..'
         quit(0)
