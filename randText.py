@@ -57,7 +57,7 @@ def createText(tripleList):
             # since the exercise doesnt clearly specify what should happen in
             # that case I will just assume  ¯\_(ツ)_/¯
             if len(finalText) > c:
-                print 'NEW record!!! Correct triplets', len(finalText)
+                print 'NEW record!!! Length: ', len(finalText)
                 c += len(finalText)
             finalText = random.choice(tripleList)
 
@@ -76,7 +76,7 @@ if __name__ == '__main__':
         triList = storeInTriplets(scanFile(txtFile))
         # print triList
         resText = createText(triList)
-        print 'Text with length ', len(resText.split()), '\n'
+        print 'Words count: ', len(resText.split()), '\n'
         print resText
     except (KeyboardInterrupt, EOFError):
         print '\nQuitting..'
