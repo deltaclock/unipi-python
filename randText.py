@@ -5,6 +5,7 @@
 # it can with the 'rb' flag but its pointless? ¯\_(ツ)_/¯
 import random
 import string
+import sys
 
 
 def scanFile(filePath):
@@ -87,11 +88,18 @@ def createText(tripleList, flag):
 
 if __name__ == '__main__':
     try:
-        txtFile = raw_input('Enter file path ')
+
+        if len(sys.argv) == 2:
+            txtFile = str(sys.argv[1])
+        elif len(sys.argv) == 1:
+            txtFile = raw_input('Enter file path ')
+        else:
+            print 'Wrong Number of args.. Either 1 or none..'
+            quit(0)
+
         # could do a /usr/bin/file against the user file but since this is a py
         # script anyone (with some knowledge) can read the source..even if its
         # compiled(.pyc) or obfuscated
-
         if txtFile[-3:] != 'txt':
             print 'Only a txt file!..'
             quit(0)
