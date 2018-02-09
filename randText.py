@@ -27,8 +27,8 @@ def scanFile(filePath):
 
 def storeInTriplets(wordList):
     # creating the triplets
-    return [[wordList[i], wordList[i + 1], wordList[i + 2]]
-            for i in xrange(0, len(wordList) - 2)]
+    return [[wordList[j], wordList[j + 1], wordList[j + 2]]
+            for j in xrange(0, len(wordList) - 2)]
 
 
 def validTriplets(tripleList, wordsToFind):
@@ -73,7 +73,7 @@ def createText(tripleList, flag):
             # no idea why..if u make it work plz tell me :)
             # https://stackoverflow.com/questions/2347265/why-does-behave-unexpectedly-on-lists
         else:
-            # that happens usually when the txt file is less than 100
+            # the else happens usually when the txt file is less than 100
             # since the exercise doesnt clearly specify what should happen in
             # that case I will just assume  ¯\_(ツ)_/¯
             if len(finalText) > c and flag == 'y':
@@ -88,7 +88,7 @@ def createText(tripleList, flag):
 
 if __name__ == '__main__':
     try:
-
+        # because argc is not good enough and can only use argv..
         if len(sys.argv) == 2:
             txtFile = str(sys.argv[1])
         elif len(sys.argv) == 1:

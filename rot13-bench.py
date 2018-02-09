@@ -88,8 +88,8 @@ So the result is the best of 3!\n'.format(number_of_runs)
         "from __main__ import benchLazy, random_strings; i = 0",
         number=number_of_runs))
 
-    print 'Using the dictionary we got {:d} sec\
- for {:.10f} loops\n'.format(number_of_runs, lazy)
+    print 'Using the dictionary we got {:.10f} sec\
+ for {:d} loops\n'.format(lazy, number_of_runs)
 
     lazyV2 = min(timeit.repeat(
         "benchLazyV2(random_strings[i]); i += 1",
@@ -97,23 +97,23 @@ So the result is the best of 3!\n'.format(number_of_runs)
         number=number_of_runs))
 
     print 'Using the dict \w all the printable chars\
- we got {:d} sec for {:.10f} loops\n'.format(number_of_runs, lazyV2)
+ we got {:.10f} sec for {:d} loops\n'.format(lazyV2, number_of_runs)
 
     math = min(timeit.repeat(
         "benchMath(random_strings[i]); i += 1",
         "from __main__ import benchMath, random_strings; i = 0",
         number=number_of_runs))
 
-    print 'Using the modulo we got {:d} sec\
- for {:.10f} loops\n'.format(number_of_runs, math)
+    print 'Using the modulo we got {:.10f} sec\
+ for {:d} loops\n'.format(math, number_of_runs)
 
     strPacket = min(timeit.repeat(
         "benchrotNoneliner(random_strings[i]); i += 1",
         "from __main__ import benchrotNoneliner, random_strings; i = 0",
         number=number_of_runs))
 
-    print 'Using the string.translate module we got {:d} sec\
- for {:.10f} loops\n'.format(number_of_runs, strPacket)
+    print 'Using the string.translate module we got {:.10f} sec\
+ for {:d} loops\n'.format(strPacket, number_of_runs)
 
     return [lazy, lazyV2, math, strPacket]
 

@@ -23,7 +23,7 @@ def handCraftedCalendar(monthN, yearN):
         idx += 1
         if idx > 7:  # so it brakes on the saturday
             print '\n'
-            idx = +1
+            idx = 1
         print str(date + 1) + '\t',
 
 
@@ -32,7 +32,7 @@ def CpythonCal(year, mon):
     try:
         return calendar.TextCalendar(calendar.SUNDAY).formatmonth(year, mon)
     except ValueError:
-        return 'Seriously..Negative Number!!'
+        return 'Seriously?!..Negative Number!!'
 
 
 if __name__ == '__main__':
@@ -48,4 +48,4 @@ if __name__ == '__main__':
         print '\n'
         handCraftedCalendar(mon, year)
         print '\n'  # cause..rip terminal
-        # print CpythonCal(year, mon)
+        print CpythonCal(year, mon)
