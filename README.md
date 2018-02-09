@@ -31,7 +31,7 @@ Ive set the fastest function as the default function but that can easily change.
 #### Rot13 Benchamrks
 The most interesting script in the repo (imo).
 
-+Note: This will take more depending on cpu power but not more than 30sec.
++Note: This will take more depending on cpu power but no more than 30sec.
 
 ##### Example Result of the Benchmark
 
