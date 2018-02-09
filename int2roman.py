@@ -24,7 +24,11 @@ def int2roman(num):
 if __name__ == '__main__':
     while True:
         try:
-            print int2roman(int(raw_input('Enter a number ')))
+            numN = int(raw_input('Enter a number '))
+            if len(str(numN)) > 10 or numN <= 0:
+                print 'Romans didnt knew that number...'
+            else:
+                print int2roman(numN)
         except ValueError:
             print 'ONLY integers...'
         except (KeyboardInterrupt, EOFError):
