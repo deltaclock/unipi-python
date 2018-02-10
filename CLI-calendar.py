@@ -48,4 +48,4 @@ if __name__ == '__main__':
         print '\n'
         handCraftedCalendar(mon, year)
         print '\n'  # cause..rip terminal
-        print CpythonCal(year, mon)
+        # print CpythonCal(year, mon)

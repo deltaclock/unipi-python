@@ -16,22 +16,24 @@ This script accepts only text(.txt) files.
 
 Either as an argument like this ``` python randText.py testTexts/medtext.txt ```
 
-or by suppling the file later(no bash autocompletion ;))
+or by supplying the file later(no bash auto-completion ;))
 ***
 #### Integer to Roman
-This script accepts only unsinged integers less than a billion..
+This script accepts only unsigned integers less than a billion..
 
-Dont recommend surpassing 1 million..If you dont want a screen full of symbols :)
+Don't recommend surpassing 1 million..If you don't want a screen full of symbols :)
+
+Note:Windows don't like that unicode..Don't run on Windows..
 ***
 #### Rot13
 The script accepts all the characters and rotates only the letters.
 
-Ive set the fastest function as the default function but that can easily change.
+I've set the fastest function as the default function but that can easily change.
 ***
-#### Rot13 Benchamrks
+#### Rot13 Benchmarks
 The most interesting script in the repo (imo).
 
-+Note: This will take more depending on cpu power but no more than 30sec.
++Note: This will take more depending on cpu speed but no more than 30sec.
 
 ##### Example Result of the Benchmark
 

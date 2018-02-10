@@ -28,7 +28,7 @@ if __name__ == '__main__':
             if len(str(numN)) > 10 or numN <= 0:
                 print 'Romans didnt knew that number...'
             else:
-                print int2roman(numN)
+                print int2roman(numN).encode('utf-8')
         except ValueError:
             print 'ONLY integers...'
         except (KeyboardInterrupt, EOFError):
