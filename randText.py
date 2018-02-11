@@ -40,8 +40,7 @@ def validTriplets(tripleList, wordsToFind):
     for idx, triplet in enumerate(tripleList):
         if wordsToFind[0] in triplet and wordsToFind[1] in triplet:
             possibleFindings.append(idx)
-    # print 'printing possible findings ',
-    # print possibleFindings
+
     findings = []
 
     # check those triplets for the correct order
@@ -49,8 +48,6 @@ def validTriplets(tripleList, wordsToFind):
         if tripleList[i][0] == wordsToFind[0]\
                 and tripleList[i][1] == wordsToFind[1]:
             findings.append(i)
-    # print 'printing findings ',
-    # print findings
 
     # Αν υπάρχουν πάνω από μία τριάδες, τότε επιλέγει μία από αυτές στην τύχη.
     return random.choice(findings) if len(findings) > 0 else -1
@@ -67,11 +64,10 @@ def createText(tripleList, flag):
 
         if foundPosition > 0:
             finalText = finalText + tripleList[foundPosition]
-            # finalText.extend(triList[foundPosition]
+            # finalText.extend(tripleList[foundPosition])
             # the += for lists calls extend which extends the same list without
             # making a new one..that functionality behaves unexpectedly here
-            # no idea why..if u make it work plz tell me :)
-            # https://stackoverflow.com/questions/2347265/why-does-behave-unexpectedly-on-lists
+            # because it mutates the tripleList itself ;)
         else:
             # the else happens usually when the txt file is less than 100
             # since the exercise doesnt clearly specify what should happen in
@@ -82,7 +78,6 @@ def createText(tripleList, flag):
                 c += len(finalText)
             finalText = random.choice(tripleList)
 
-    # print 'Words count: ', len(finalText)
     return ' '.join(finalText)
 
 
